@@ -1,0 +1,16 @@
+{
+  "name": "groovymark-finance",
+  "version": "2.0.0",
+  "description": "GroovyMark Finance: proposals, invoices, income, expenses and reports",
+  "private": true,
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "setup": "npm install --prefix backend && npm install --prefix frontend",
+    "dev": "node scripts/dev.js",
+    "build": "npm run build --prefix frontend",
+    "start": "node backend/src/server.js",
+    "reset-password": "node backend/src/scripts/reset-password.js"
+  }
+}

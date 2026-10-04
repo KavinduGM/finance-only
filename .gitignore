@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+
+# Build output
+frontend/dist/
+
+# Runtime data: the database, uploaded receipts/logo and backups.
+# This is real financial data and must never be committed.
+backend/data/
+/data/
+*.db
+*.db-shm
+*.db-wal
+
+# Environment & secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+logs/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# Tooling caches
+*.tsbuildinfo
+.vite/

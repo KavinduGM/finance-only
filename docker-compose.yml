@@ -1,0 +1,38 @@
+# One container: the API and the web app on port 3001, data in a named volume.
+#
+# Dokploy:  create a "Compose" service from this repository, add the variables
+#           below in its Environment tab, then add your domain (port 3001).
+# Laptop:   uncomment the "ports" lines, then:  docker compose up -d --build
+#           and open http://localhost:3001
+
+services:
+  finance:
+    build: .
+    restart: unless-stopped
+    environment:
+      # First administrator, created only when the database has no users yet.
+      ADMIN_USERNAME: ${ADMIN_USERNAME:-admin}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-}
+      # Public address, e.g. https://finance.example.com
+      APP_URL: ${APP_URL:-}
+      APP_TIMEZONE: ${APP_TIMEZONE:-Asia/Colombo}
+      # Email through Resend. The sender must be on a domain verified in Resend.
+      RESEND_API_KEY: ${RESEND_API_KEY:-}
+      EMAIL_FROM: ${EMAIL_FROM:-}
+      EMAIL_REPLY_TO: ${EMAIL_REPLY_TO:-}
+      # Set to "true" on a demo or test copy so it never emails real clients.
+      EMAIL_DISABLED: ${EMAIL_DISABLED:-false}
+      SESSION_DAYS: ${SESSION_DAYS:-7}
+      BACKUP_KEEP: ${BACKUP_KEEP:-14}
+    volumes:
+      - finance_data:/data
+    expose:
+      - "3001"
+    # ports:
+    #   - "3001:3001"
+    # When the port is published directly like this (no reverse proxy in front),
+    # also add  TRUST_PROXY: "0"  under environment.
+
+volumes:
+  # The database, uploaded receipts/logo and automatic backups.
+  finance_data:
