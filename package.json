@@ -11,6 +11,7 @@
     "dev": "node scripts/dev.js",
     "build": "npm run build --prefix frontend",
     "start": "node backend/src/server.js",
-    "reset-password": "node backend/src/scripts/reset-password.js"
+    "reset-password": "node backend/src/scripts/reset-password.js",
+    "test": "node scripts/test.js"
   }
 }

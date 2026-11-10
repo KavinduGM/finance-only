@@ -6,6 +6,8 @@ A finance system for one company: proposals, invoices, income, expenses, recurri
 - **Frontend:** React + TypeScript + Tailwind, served by the backend in production
 - **Deployment:** one Docker container, one data volume
 
+Project history, decisions, architecture and open items are in [HANDOVER.md](HANDOVER.md).
+
 ## What is in it
 
 | Area | What it does |
@@ -36,6 +38,12 @@ npm run dev
 Open http://localhost:5173. The sign-in is in `backend/.env` (`ADMIN_USERNAME` / `ADMIN_PASSWORD`). If `ADMIN_PASSWORD` is empty, a random password is printed once in the terminal the first time the server starts, and you are asked to replace it when you sign in.
 
 Local data lives in `backend/data/` (ignored by git).
+
+To run the automated tests (138 end-to-end checks plus a backup-restore test, on a throwaway database that is deleted afterwards):
+
+```bash
+npm test
+```
 
 ## Deploy with Dokploy
 
@@ -99,7 +107,7 @@ Press **Deploy**. When the build finishes, open the domain and sign in.
 Then, in the app:
 
 1. **Settings → Company**: company details, logo and base currency.
-2. **Settings → Invoices & proposals**: number prefixes, default terms and the bank details printed on invoices.
+2. **Settings → Documents**: number prefixes, default terms and the bank details printed on invoices.
 3. **Settings → Email**: check that it says email is sent through Resend, then **Send test email**.
 
 ### Using Docker Compose instead
